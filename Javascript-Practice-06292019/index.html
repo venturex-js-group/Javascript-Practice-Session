@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+  <link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700,900|Material+Icons" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/vuetify/dist/vuetify.min.css" rel="stylesheet">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, minimal-ui">
+</head>
+<body>
+  <div id="app">
+    <v-app>
+      <v-content>
+        <v-container>
+          <v-layout>
+            <v-flex v-for="user of users" :key="user.name" class="sm6">
+              <h1>{{user.name}}'s Chat</h1>
+              <h2>Friends</h2>
+              <ul>
+                <li v-for="friend of user.friends">{{friend}}</li>
+              </ul>
+              <h2>Chat</h2>
+              <div v-for="message of user.messages">{{message}}</div>
+            </v-flex>
+          </v-layout>
+        </v-container>
+      </v-content>
+    </v-app>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vuetify/dist/vuetify.js"></script>
+  <script>
+    new Vue({ 
+      el: '#app',
+      data: {
+        users: [{
+          name: 'Radu',
+          friends: ['Richard', 'Amy', 'Ajay'],
+          messages: ['hi', 'hey what\'s up', 'nothing much']
+        },{
+          name: 'Ajay',
+          friends: ['Radu', 'Hayley', 'Chloe'],
+          messages: ['hi', 'hey what\'s up', 'nothing much']
+        }]
+
+      }
+    })
+
+    // Study v-for
+
+    // Practice: Create a data property that holds the user's friends.  Show the friends in the HTML markup using v-for and ul/li tags.
+
+    // Practice: Create another data property that holds the user's messages.  Display the messages using v-for and div tags.
+
+    // Study grid system
+
+    // Practice: Create a two-column layout to show both sides of a chat, using v-layout and v-flex.
+  </script>
+</body>
+</html>

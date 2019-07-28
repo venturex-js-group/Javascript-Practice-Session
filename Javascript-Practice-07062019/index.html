@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700,900|Material+Icons" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/vuetify/dist/vuetify.min.css" rel="stylesheet">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, minimal-ui">
+</head>
+<body>
+  <div id="app">
+    <v-app>
+      <v-content>
+        <v-container>
+          <v-layout>
+            <v-flex v-for="user of users" :key="user.name" class="sm6">
+              <h1>{{user.name}}'s Chat</h1>
+              <h2>Friends</h2>
+              <ul>
+                <li v-for="friend of user.friends">{{friend}}</li>
+              </ul>
+              <h2>Chat</h2>
+              <div v-for="message of user.messages" :class="[user.name == message.sender ? 'green': 'grey', 'white--text']">
+                {{message.content}}
+              </div>
+            </v-flex>
+          </v-layout>
+        </v-container>
+      </v-content>
+    </v-app>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vuetify/dist/vuetify.js"></script>
+  <script>
+    let allMessages = [{
+      sender: 'Radu',
+      content: 'hi'
+    },{
+      sender: 'Ajay',
+      content: 'sup'
+    },{
+      sender: 'Radu',
+      content: 'nothin'
+    },{
+      sender: 'Radu',
+      content: 'ok'
+    }]
+    new Vue({ 
+      el: '#app',
+      data: {
+        users: [{
+          name: 'Radu',
+          friends: ['Richard', 'Amy', 'Ajay'],
+          messages: allMessages
+        },{
+          name: 'Ajay',
+          friends: ['Radu', 'Hayley', 'Chloe'],
+          messages: allMessages
+        }]
+      },
+      computed: {
+        favoriteColor() {
+          // whatever
+        }
+      },
+      methods: {
+        isGreenMessage(message) {
+          return message == 'hi'
+        }
+      }
+    })
+
+   // Review chat app so far ...
+
+    // Study data property assigned to variable
+
+    // 5 minutes
+    // Practice: Change the messages to be objects instead of string.  Each message object has a sender property (who sent the message) and a content property (the text of the message).
+    // Hint: you can use the same array to hold the messages for both users.
+    
+    // Study conditional class rendering
+
+    // 7 minutes
+    // Practice: Style the messages differently based on whether they are sent or received by the current user, using CSS classes.
+
+    // 3 minutes
+    // Practice: Do the same, but align the text left or right.
+
+    // Study input binding, interpolation
+
+    // 7 minutes
+    // Practice: Add a text box in each chat, bound to a data property that holds the current message the user is typing.  Output the current message in markup.
+
+   // Study buttons
+
+   // 3 minutes
+   // Practice: Create a Send button next to the text field. 
+    
+    // Study events
+
+    // 10 minutes
+    // Practice: When the user hits the send button, the current message is added to the messages list, and the current message is cleared.  Make sure the message ends up in both users' histories!
+  </script>
+</body>
+</html>
